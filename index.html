@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- Bootstrap CSS -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+            crossorigin="anonymous"
+        />
+
+        <title>Quản lý nhân viên</title>
+    </head>
+    <body>
+        <div class="container-fluid py-3">
+            <div class="row fs-6">
+                <div class="col-8">
+                    <p class="display-6">Danh sách nhân viên</p>
+                    <table class="table" id="listNhanVienTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Mã nhân viên</th>
+                                <th scope="col">Tên nhân viên</th>
+                                <th scope="col">Chức vụ</th>
+                                <th scope="col">Lương cơ bản</th>
+                                <th scope="col">Số giờ làm</th>
+                                <th scope="col"><button class="btn btn-success btn-sm" id="show-add-form">Thêm nhân viên</button></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <tr>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                                <td>@mdo</td>
+                                <td>@mdo</td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-4" style="display: none" id="add_container">
+                    <p class="display-6">Thêm nhân viên</p>
+                    <form action="" id="add_form">
+                        <div class="mb-3 row">
+                            <label for="manv" class="col-4 col-form-label"
+                                >Mã nhân viên</label
+                            >
+                            <div class="col-8">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="manv"
+                                />
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="tennv" class="col-4 col-form-label"
+                                >Tên nhân viên</label
+                            >
+                            <div class="col-8">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="tennv"
+                                />
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="chucvu" class="col-4 col-form-label"
+                                >Chức vụ</label
+                            >
+                            <div class="col-8">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="chucvu"
+                                />
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="hesochucvu" class="col-4 col-form-label"
+                                >Hệ số chức vụ</label
+                            >
+                            <div class="col-8">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="hesochucvu"
+                                />
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="luongcb" class="col-4 col-form-label"
+                                >Lương cơ bản</label
+                            >
+                            <div class="col-8">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="luongcb"
+                                />
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="sogiolam" class="col-4 col-form-label"
+                                >Số giờ làm</label
+                            >
+                            <div class="col-8">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="sogiolam"
+                                />
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="col-auto d-flex justify-content-end">
+                            <button
+                                type="submit"
+                                class="btn btn-primary mb-3 px-5"
+                                id="save_add"
+                            >
+                                Lưu
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-4" style="display: none" id="update_container">
+                    <p class="display-6">Cập nhật nhân viên</p>
+                    <form action="" id="update_form">
+                        <div class="mb-3 row">
+                            <label
+                                for="manv_update"
+                                class="col-4 col-form-label"
+                                >Mã nhân viên</label
+                            >
+                            <div class="col-8">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="manv_update"
+                                />
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label
+                                for="tennv_update"
+                                class="col-4 col-form-label"
+                                >Tên nhân viên</label
+                            >
+                            <div class="col-8">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="tennv_update"
+                                />
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label
+                                for="chucvu_update"
+                                class="col-4 col-form-label"
+                                >Chức vụ</label
+                            >
+                            <div class="col-8">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="chucvu_update"
+                                />
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label
+                                for="hesochucvu_update"
+                                class="col-4 col-form-label"
+                                >Hệ số chức vụ</label
+                            >
+                            <div class="col-8">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="hesochucvu_update"
+                                />
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label
+                                for="luongcb_update"
+                                class="col-4 col-form-label"
+                                >Lương cơ bản</label
+                            >
+                            <div class="col-8">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="luongcb_update"
+                                />
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label
+                                for="sogiolam_update"
+                                class="col-4 col-form-label"
+                                >Số giờ làm</label
+                            >
+                            <div class="col-8">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="sogiolam_update"
+                                />
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="col-auto d-flex justify-content-end">
+                            <button
+                                type="submit"
+                                class="btn btn-primary mb-3 px-5"
+                                id="save_update"
+                            >
+                                Lưu
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+            crossorigin="anonymous"
+        ></script>
+        <script src="./js/NhanVien.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+            integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <script src="./js/main.js"></script>
+    </body>
+</html>
