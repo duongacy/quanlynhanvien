@@ -12,237 +12,149 @@
             integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
             crossorigin="anonymous"
         />
-
+        <link rel="stylesheet" href="./style.css" />
         <title>Quản lý nhân viên</title>
     </head>
     <body>
-        <div class="container-fluid py-3">
-            <div class="row fs-6">
-                <div class="col-8">
-                    <p class="display-6">Danh sách nhân viên</p>
-                    <table class="table" id="listNhanVienTable">
-                        <thead>
-                            <tr>
-                                <th scope="col">Mã nhân viên</th>
-                                <th scope="col">Tên nhân viên</th>
-                                <th scope="col">Chức vụ</th>
-                                <th scope="col">Lương cơ bản</th>
-                                <th scope="col">Số giờ làm</th>
-                                <th scope="col"><button class="btn btn-success btn-sm" id="show-add-form">Thêm nhân viên</button></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- <tr>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                            </tr> -->
-                        </tbody>
-                    </table>
+        <main class="py-5 container">
+            <!--.maNhanVien;
+        .tenNhanVien;
+        .heSoChucVu;
+        .luongCoBan;
+        .soGioLamTrongThang-->
+            <form class="border my-2" id="nhanVienForm">
+                <div class="bg-dark py-2 mb-3">
+                    <h2 class="text-white text-center" id="nhanVienFormTitle">Thêm nhân viên</h2>
                 </div>
-                <div class="col-4" style="display: none" id="add_container">
-                    <p class="display-6">Thêm nhân viên</p>
-                    <form action="" id="add_form">
-                        <div class="mb-3 row">
-                            <label for="manv" class="col-4 col-form-label"
-                                >Mã nhân viên</label
-                            >
-                            <div class="col-8">
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="manv"
-                                />
+                <div class="div px-3">
+                    <div class="mb-3 row">
+                        <label for="" class="col-lg-2 col-form-label"
+                            >Mã nhân viên</label
+                        >
+                        <div class="col-lg-10">
+                            <input
+                                type=""
+                                class="
+                                    form-control
+                                    rounded-0
+                                    focus-box-shadow-none
+                                "
+                                name="maNhanVien"
+                            />
+                            <div class="invalid-feedback">
+                                Mã nhân viên chưa đúng định dạng
                             </div>
                         </div>
-                        <div class="mb-3 row">
-                            <label for="tennv" class="col-4 col-form-label"
-                                >Tên nhân viên</label
-                            >
-                            <div class="col-8">
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="tennv"
-                                />
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-lg-2 col-form-label"
+                            >Tên nhân viên</label
+                        >
+                        <div class="col-lg-10">
+                            <input
+                                type=""
+                                class="
+                                    form-control
+                                    rounded-0
+                                    focus-box-shadow-none
+                                "
+                                name="tenNhanVien"
+                            />
+                            <div class="invalid-feedback">
+                                Tên nhân viên chưa đúng định dạng
                             </div>
                         </div>
-                        <div class="mb-3 row">
-                            <label for="chucvu" class="col-4 col-form-label"
-                                >Chức vụ</label
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-lg-2 col-form-label"
+                            >Chức vụ</label
+                        >
+                        <div class="col-lg-10">
+                            <select
+                                class="
+                                    form-control
+                                    rounded-0
+                                    focus-box-shadow-none
+                                "
+                                name="chucVu"
                             >
-                            <div class="col-8">
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="chucvu"
-                                />
+                                <option value="1">Nhân viên</option>
+                                <option value="2">Quản lý</option>
+                                <option value="3">Giám đốc</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-lg-2 col-form-label"
+                            >Lương cơ bản</label
+                        >
+                        <div class="col-lg-10">
+                            <input
+                                type="number"
+                                class="
+                                    form-control
+                                    rounded-0
+                                    focus-box-shadow-none
+                                "
+                                name="luongCoBan"
+                            />
+                            <div class="invalid-feedback">
+                                Lương nhân viên từ 1000000 đến 20000000
                             </div>
                         </div>
-                        <div class="mb-3 row">
-                            <label for="hesochucvu" class="col-4 col-form-label"
-                                >Hệ số chức vụ</label
-                            >
-                            <div class="col-8">
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="hesochucvu"
-                                />
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-lg-2 col-form-label"
+                            >Số giờ làm</label
+                        >
+                        <div class="col-lg-10">
+                            <input
+                                type="number"
+                                class="
+                                    form-control
+                                    rounded-0
+                                    focus-box-shadow-none
+                                "
+                                name="soGioLamTrongThang"
+                            />
+                            <div class="invalid-feedback">
+                                Số giờ làm không hợp lệ (từ 50-120)
                             </div>
                         </div>
-                        <div class="mb-3 row">
-                            <label for="luongcb" class="col-4 col-form-label"
-                                >Lương cơ bản</label
-                            >
-                            <div class="col-8">
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="luongcb"
-                                />
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label for="sogiolam" class="col-4 col-form-label"
-                                >Số giờ làm</label
-                            >
-                            <div class="col-8">
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="sogiolam"
-                                />
-                            </div>
-                        </div>
-                        <hr />
-                        <div class="col-auto d-flex justify-content-end">
-                            <button
-                                type="submit"
-                                class="btn btn-primary mb-3 px-5"
-                                id="save_add"
-                            >
-                                Lưu
-                            </button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
-                <div class="col-4" style="display: none" id="update_container">
-                    <p class="display-6">Cập nhật nhân viên</p>
-                    <form action="" id="update_form">
-                        <div class="mb-3 row">
-                            <label
-                                for="manv_update"
-                                class="col-4 col-form-label"
-                                >Mã nhân viên</label
-                            >
-                            <div class="col-8">
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="manv_update"
-                                />
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label
-                                for="tennv_update"
-                                class="col-4 col-form-label"
-                                >Tên nhân viên</label
-                            >
-                            <div class="col-8">
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="tennv_update"
-                                />
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label
-                                for="chucvu_update"
-                                class="col-4 col-form-label"
-                                >Chức vụ</label
-                            >
-                            <div class="col-8">
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="chucvu_update"
-                                />
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label
-                                for="hesochucvu_update"
-                                class="col-4 col-form-label"
-                                >Hệ số chức vụ</label
-                            >
-                            <div class="col-8">
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="hesochucvu_update"
-                                />
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label
-                                for="luongcb_update"
-                                class="col-4 col-form-label"
-                                >Lương cơ bản</label
-                            >
-                            <div class="col-8">
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="luongcb_update"
-                                />
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label
-                                for="sogiolam_update"
-                                class="col-4 col-form-label"
-                                >Số giờ làm</label
-                            >
-                            <div class="col-8">
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="sogiolam_update"
-                                />
-                            </div>
-                        </div>
-                        <hr />
-                        <div class="col-auto d-flex justify-content-end">
-                            <button
-                                type="submit"
-                                class="btn btn-primary mb-3 px-5"
-                                id="save_update"
-                            >
-                                Lưu
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
 
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-            crossorigin="anonymous"
-        ></script>
-        <script src="./js/NhanVien.js"></script>
+                <div class="d-flex bg-light py-2 px-3 justify-content-end">
+                    <button class="btn btn-success rounded-0 px-5">Lưu</button>
+                </div>
+            </form>
+            <table class="table table-bordered" id="tableNhanVien">
+                <thead class="table-success">
+                    <tr>
+                        <th scope="col">Tên nhân viên</th>
+                        <th scope="col">Mã nhân viên</th>
+                        <th scope="col">Chức vụ</th>
+                        <th scope="col">Tổng lương</th>
+                        <th scope="col">Xếp loại nhân viên</th>
+                        <th scope="col"><button class="btn btn-primary rounded-0 w-100" id="themNhanVien">Thêm</button></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </main>
+
         <script
             src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
             integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+            crossorigin="anonymous"
+        ></script>
+        <script src="./js/NhanVien.js"></script>
         <script src="./js/main.js"></script>
     </body>
 </html>

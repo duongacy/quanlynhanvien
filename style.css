@@ -1,0 +1,9 @@
+button,input{
+    outline: none;
+}
+.outline-none{
+    outline: none !important;
+}
+.focus-box-shadow-none:focus{
+box-shadow: none;
+}
