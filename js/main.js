@@ -49,7 +49,7 @@ function themNhanVien() {
         resetForm();
     })
     addPromise.catch(err => {
-        showAlert("alert-danger", error);
+        showAlert("alert-danger", err);
     })
 }
 function xoaNhanVien(id) {
@@ -62,7 +62,7 @@ function xoaNhanVien(id) {
         showAlert("alert-success", "Xóa nhân viên thành công");
     })
     xoaNhanVienPromise.catch(err=>{
-        showAlert("alert-success", err);
+        showAlert("alert-danger", err);
     })
 }
 function hienThiCapNhatNhanVien(maNhanVien, tenNhanVien, heSoChucVu, luongCoBan, soGioLamTrongThang) {
