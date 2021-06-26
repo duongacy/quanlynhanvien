@@ -1,5 +1,5 @@
 class NhanVien {
-    constructor(manv = "", tennv = "", chucvu = "", hesochucvu = 0, luongcb = "", soGioLamTrongThang = "") {
+    constructor(manv = "", tennv = "", chucvu = "", hesochucvu = 1, luongcb = 0, soGioLamTrongThang = 0) {
         this.maNhanVien = manv;
         this.tenNhanVien = tennv;
         this.chucVu = chucvu;

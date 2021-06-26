@@ -45,7 +45,11 @@ function themNhanVien() {
         let newNhanVienObj = new NhanVien(data.maNhanVien, data.tenNhanVien, data.chucVu,
             data.heSoChucVu, data.luongCoBan, data.soGioLamTrongThang);
         addTableRow(newNhanVienObj);
+        showAlert("alert-success", "Thêm nhân viên thành công");
         resetForm();
+    })
+    addPromise.catch(err => {
+        showAlert("alert-danger", error);
     })
 }
 function xoaNhanVien(id) {
@@ -55,6 +59,10 @@ function xoaNhanVien(id) {
     })
     xoaNhanVienPromise.then((res) => {
         $(`#row-${id}`).remove();
+        showAlert("alert-success", "Xóa nhân viên thành công");
+    })
+    xoaNhanVienPromise.catch(err=>{
+        showAlert("alert-success", err);
     })
 }
 function hienThiCapNhatNhanVien(maNhanVien, tenNhanVien, heSoChucVu, luongCoBan, soGioLamTrongThang) {
@@ -81,17 +89,21 @@ function capNhatNhanVien(maNhanVien) {
         heSoChucVu: $("[name='chucVu']").value,
         luongCoBan: $("[name='luongCoBan']").value,
         soGioLamTrongThang: $("[name='soGioLamTrongThang']").value
-    } // đây là object chay
-    const addPromise = axios({
+    }
+    const updatePromise = axios({
         method: "PUT",
         url: `http://svcy.myclass.vn/api/QuanLyNhanVienApi/CapNhatThongTInNhanVien?maNhanVien=${maNhanVien}`,
         data: data
     })
-    addPromise.then((res) => {
+    updatePromise.then((res) => {
         let newNhanVienObj = new NhanVien(maNhanVien, data.tenNhanVien, data.chucVu,
             data.heSoChucVu, data.luongCoBan, data.soGioLamTrongThang);
         updateTableRow(newNhanVienObj); //Chỉnh sửa trực tiếp data trên table k call lại API
+        showAlert("alert-success", "Cập nhật nhân viên thành công");
         resetForm();
+    })
+    updatePromise.catch(err=>{
+        showAlert("alert-danger", err);
     })
 }
 
@@ -104,6 +116,7 @@ function resetForm() {
     $("[name='chucVu']").value = 1;
     $("[name='luongCoBan']").value = "";
     $("[name='soGioLamTrongThang']").value = "";
+    removeValidateStyle();
     addEventAddFormSubmit();
 }
 
@@ -120,7 +133,7 @@ function updateTableRow(item) {
             <button class="btn btn-danger rounded-0 w-100 my-1" onclick="xoaNhanVien(${item.maNhanVien})">
                 Xóa
             </button>
-            <button class="btn btn-warning rounded-0 w-100 my-1" onclick="hienThiCapNhatNhanVien('${item.maNhanVien}','${item.tenNhanVien}','${item.heSoChucVu}','${item.luongCoBan}', '${item.soGioLamTrongThang}')">
+             <button class="btn btn-warning rounded-0 w-100 my-1" onclick="hienThiCapNhatNhanVien('${item.maNhanVien}','${item.tenNhanVien}','${item.heSoChucVu}','${item.luongCoBan}', '${item.soGioLamTrongThang}')">
                 Cập nhật
             </button>
         </td>
@@ -209,5 +222,14 @@ function removeValidateStyle() {
             siblingElement.classList.contains("invalid-feedback") && (siblingElement.style.display = "none");
         }
     })
+}
+
+function showAlert(type, msg) {
+    $("#crud-alert-content").innerText = msg;
+    $("#crud-alert").classList.add(type);
+    $("#crud-alert").style.display = "block";
+    setTimeout(() => {
+        $("#crud-alert").style.display = "none";
+    }, 3000)
 }
 // End event handling
